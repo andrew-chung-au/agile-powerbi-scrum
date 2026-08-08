@@ -49,19 +49,19 @@ The interactive Power BI dashboard enables the acquisition and marketing teams t
 
 **Executive Overview**
 
-![Executive Overview](visuals/5_executive_overview.png)
+![Executive Overview](./visuals/5_Executive_Overview.png)
 
 *Key metrics: 3,883 movies, 6,040 users, ~10K ratings; Drama and Comedy lead engagement; near 50/50 split between Free and Subscriber.*
 
 **User Footprint**
 
-![User Footprint](visuals/7_user_footprint.png)
+![User Footprint](./visuals/7_User_Footprint.png)
 
 *Balanced distribution across age groups, countries, and devices; core engaged audience in the 35–54 age band.*
 
 **Conversion Catalyst**
 
-![Conversion Catalyst](visuals/9_conversion_catalyst.png)
+![Conversion Catalyst](./visuals/9_Conversion_Catalyst.png)
 
 *Top‑Left = “Paywall Goldmine” (high subscriber, low free).  
 Bottom‑Right = “Free‑Tier Hooks” (high free, low subscriber).  
