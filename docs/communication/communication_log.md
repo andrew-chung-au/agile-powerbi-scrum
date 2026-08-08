@@ -1,17 +1,36 @@
 # DataLens Streaming – Communication Log
 
-**Project:** DataLens Streaming
-**Client:** StreamFlix
-**Last updated:** 22/06/2026
+**Project:** DataLens Streaming  
+**Client:** StreamFlix  
+**Last updated:** 02/07/2026 
 
 This log captures all project-related communications in chronological order, including client meetings, internal emails, and forwarded correspondence.
 
+## Contents
+
+- [COMMS-01 – Sprint 1: Kickoff Meeting](#comms-01-client--sprint-1-kickoff-meeting)
+- [COMMS-02 – Sprint 1: Clarifying Questions for Review](#comms-02-internal--sprint-1-clarifying-questions-for-review)
+- [COMMS-03 – Sprint 1: StreamFlix Raw Data](#comms-03-internal--sprint-1-streamflix-raw-data)
+- [COMMS-04 – Sprint 1: Backlog Shared](#comms-04-internal--sprint-1-backlog-shared)
+- [COMMS-05 – Sprint 1: Data Limitations and Cleaning Summary](#comms-05-internal--sprint-1-data-limitations-and-cleaning-summary)
+- [COMMS-06 – Sprint 1: New Datasets Received](#comms-06-internal--sprint-1-new-datasets-received-users--ratings)
+- [COMMS-07 – Sprint 1: Client Data Corrections](#comms-07-internal--sprint-1-client-data-corrections)
+- [COMMS-08 – Sprint 1: Dataset Review Summary](#comms-08-internal--sprint-1-dataset-review-summary-users--ratings)
+- [COMMS-09 – Sprint 1 Close: Next Phase Briefing](#comms-09-internal--sprint-1-close-next-phase-briefing)
+- [COMMS-10 – Sprint 2: Python Mapping Help Request](#comms-10-internal--sprint-2-python-mapping-help-request)
+- [COMMS-11 – Sprint 2: Python Mapping Guidance](#comms-11-internal--sprint-2-python-mapping-guidance)
+- [COMMS-12 – Sprint 2: Client Request for Rating Insights](#comms-12-internal--sprint-2-client-request-for-rating-insights)
+- [COMMS-13 – Sprint 3: Client Request for Age-Group Visualisations](#comms-13-internal--sprint-3-client-request-for-age-group-visualisations)
+- [COMMS-14 – Sprint 3: Age-Grouping Update Confirmation](#comms-14-internal--sprint-3-age-grouping-update-confirmation)
+- [COMMS-15 – Sprint 3: Client Dashboard Feedback](#comms-15-internal--sprint-3-client-dashboard-feedback)
+- [COMMS-16 – Sprint 3: Draft Response to Client Feedback](#comms-16-internal--sprint-3-draft-response-to-client-feedback)
+
 ---
 
-## [COMMS-01] Client – Sprint 1: Kickoff Meeting
-**Date:** 17/06/2026
-**From:** Bash, Innovation Manager, Business Development Department, StreamFlix
-**To:** DataLens Team
+## [COMMS-01] Client – Sprint 1: Kickoff Meeting  
+**Date:** 17/06/2026  
+**From:** Bash, Innovation Manager, Business Development Department, StreamFlix  
+**To:** DataLens Team  
 **Type:** Client Meeting
 
 We're here today to discuss an exciting and urgent project to help the company transition from a free, ad-supported platform to a subscription-based service.
@@ -28,12 +47,12 @@ The timeline for this project is very tight. The revamped platform is already an
 
 ---
 
-## [COMMS-02] Internal – Sprint 1: Clarifying Questions for Review
-**Date:** 17/06/2026 05:00 PM
-**From:** Andrew Chung `<a.chung@datalens.com>`
-**To:** Bhanu Prakash `<b.prakash@datalens.com>`
-**Cc:** da-team2
-**Subject:** DataLens Streaming Project: Clarifying Questions for Review
+## [COMMS-02] Internal – Sprint 1: Clarifying Questions for Review  
+**Date:** 17/06/2026 05:00 PM  
+**From:** Andrew Chung `<a.chung@datalens.com>`  
+**To:** Bhanu Prakash `<b.prakash@datalens.com>`  
+**Cc:** da-team2  
+**Subject:** DataLens Streaming Project: Clarifying Questions for Review  
 
 Hi Bhanu,
 
@@ -59,53 +78,54 @@ Once you have reviewed this, we can finalise the wording before sending it to th
 
 Best regards,
 
-Andrew Chung
+Andrew Chung  
 DataLens Analytics Team
 
 ---
 
-## [COMMS-03] Internal – Sprint 1: StreamFlix Raw Data
-**Date:** 18/06/2026 10:45 AM
-**From:** Bhanu Prakash `<b.prakash@datalens.com>`
-**To:** da-team2
+## [COMMS-03] Internal – Sprint 1: StreamFlix Raw Data  
+**Date:** 18/06/2026 10:45 AM  
+**From:** Bhanu Prakash `<b.prakash@datalens.com>`  
+**To:** da-team2  
 **Subject:** Fwd: StreamFlix Raw Data
 
 Dear team,
 
 Please see the below forwarded email from the client.
 
-Streamflix is counting on your expertise to create impactful dashboards that help guide their transition to a subscription-based platform. Let's ensure we meet their expectations together!
+StreamFlix is counting on your expertise to create impactful dashboards that help guide their transition to a subscription-based platform. Let's ensure we meet their expectations together!
 
 Kind regards,
 
-Bhanu Prakash
+Bhanu Prakash  
 Product Owner
 
-> **Forwarded message**
-> **From:** BASH `<bash@streamflix.com>`
-> **Sent:** 18/06/2026 10:00 AM
-> **To:** Product Owner
-> **Subject:** StreamFlix Raw Data
-> **Attachments:** `Movies.csv`
+> **Forwarded message**  
+> **From:** BASH `<bash@streamflix.com>`  
+> **Sent:** 18/06/2026 10:00 AM  
+> **To:** Product Owner  
+> **Subject:** StreamFlix Raw Data  
+> **Attachments:** `Movies.csv`  
 >
 > Good afternoon!
 >
-> Thank you for your insightful questions. I will need to consult with my colleagues to get all these answers. In the meanwhile please find attached the movies.csv file, which includes the raw data you'll need for the project.
+> Thank you for your insightful questions. I will need to consult with my colleagues to get all these answers. In the meanwhile please find attached the `Movies.csv` file, which includes the raw data you'll need for the project.
 >
 > Best regards,
 >
 > Sincerely,
 >
-> Bash
-> Innovation Manager, Business Development Department, Streamflix
+> Bash  
+> Innovation Manager, Business Development Department, StreamFlix
 
 ---
 
-## [COMMS-04] Internal – Sprint 1: Backlog Shared
-**Date:** 18/06/2026 11:15 AM
-**From:** Bhanu Prakash `<b.prakash@datalens.com>`
-**To:** da-team2
-**Subject:** Re: Fwd: StreamFlix Raw Data
+## [COMMS-04] Internal – Sprint 1: Backlog Shared  
+**Date:** 18/06/2026 11:15 AM  
+**From:** Bhanu Prakash `<b.prakash@datalens.com>`  
+**To:** da-team2  
+**Subject:** Sprint 1 Backlog
+**Attachments:** `StreamFlix_Sprint_1_Backlog.docx`
 
 Dear da-team2,
 
@@ -119,16 +139,16 @@ I look forward to a productive Sprint 1 and appreciate your commitment to delive
 
 Kind regards,
 
-Bhanu Prakash
+Bhanu Prakash  
 Product Owner
 
 ---
 
-## [COMMS-05] Internal – Sprint 1: Data Limitations and Cleaning Summary
-**Date:** 19/06/2026 10:00 AM
-**From:** Sabahat Naz `<s.naz@datalens.com>`
-**To:** Bhanu Prakash `<b.prakash@datalens.com>`
-**Cc:** da-team2
+## [COMMS-05] Internal – Sprint 1: Data Limitations and Cleaning Summary  
+**Date:** 19/06/2026 10:00 AM  
+**From:** Sabahat Naz `<s.naz@datalens.com>`  
+**To:** Bhanu Prakash `<b.prakash@datalens.com>`  
+**Cc:** da-team2  
 **Subject:** DataLens Streaming Project: Data Limitations and Cleaning Summary
 
 Dear Bhanu,
@@ -175,20 +195,21 @@ We recommend that the missing user-level data be requested as a priority, as it 
 
 Kind regards,
 
-Sabahat Naz
+Sabahat Naz  
 DataLens Analytics Team
 
 ---
 
-## [COMMS-06] Internal – Sprint 1: New Datasets Received (Users & Ratings)
-**Date:** 19/06/2026 10:45 AM
-**From:** Bhanu Prakash `<b.prakash@datalens.com>`
-**To:** da-team2
-**Subject:** Re: Re: Fwd: StreamFlix Raw Data
+## [COMMS-06] Internal – Sprint 1: New Datasets Received (Users & Ratings)  
+**Date:** 19/06/2026 10:45 AM  
+**From:** Bhanu Prakash `<b.prakash@datalens.com>`  
+**To:** da-team2  
+**Subject:** New Datasets Received: Users and Ratings 
+**Attachments:** `Users.csv`, `Ratings_Dataset.csv`
 
 Dear Team,
 
-We have just received additional input from the client in the form of users.csv and ratings.csv datasets. As part of our Sprint 1 activities, please review and explore these files thoroughly.
+We have just received additional input from the client in the form of `Users.csv` and `Ratings_Dataset.csv` datasets. As part of our Sprint 1 activities, please review and explore these files thoroughly.
 
 Your key objectives are:
 
@@ -202,16 +223,16 @@ Please ensure your analysis is completed and ready for discussion during our upc
 
 Kind regards,
 
-Bhanu Prakash
+Bhanu Prakash  
 Product Owner
 
 ---
 
-## [COMMS-07] Internal – Sprint 1: Client Data Corrections
-**Date:** 19/06/2026 11:30 AM
-**From:** Bhanu Prakash `<b.prakash@datalens.com>`
-**To:** da-team2
-**Subject:** Re: Re: Re: Fwd: StreamFlix Raw Data
+## [COMMS-07] Internal – Sprint 1: Client Data Corrections  
+**Date:** 19/06/2026 11:30 AM  
+**From:** Bhanu Prakash `<b.prakash@datalens.com>`  
+**To:** da-team2  
+**Subject:** Fwd: StreamFlix Data Corrections and Clarifications
 
 Dear team,
 
@@ -219,14 +240,14 @@ Please see the below forwarded email from the client in response to your earlier
 
 Kind regards,
 
-Bhanu Prakash
+Bhanu Prakash  
 Product Owner
 
-> **Forwarded message**
-> **From:** BASH `<bash@streamflix.com>`
-> **Sent:** 19/06/2026 11:15 AM
-> **To:** Product Owner
-> **Subject:** StreamFlix Raw Data
+> **Forwarded message**  
+> **From:** BASH `<bash@streamflix.com>`  
+> **Sent:** 19/06/2026 11:15 AM  
+> **To:** Product Owner  
+> **Subject:** StreamFlix Data Corrections and Clarifications
 >
 > Hello!
 >
@@ -246,12 +267,12 @@ Product Owner
 
 ---
 
-## [COMMS-08] Internal – Sprint 1: Dataset Review Summary (Users & Ratings)
-**Date:** 19/06/2026 02:30 PM
-**From:** Andrew Chung `<a.chung@datalens.com>`
-**To:** Bhanu Prakash `<b.prakash@datalens.com>`
-**Cc:** da-team2
-**Subject:** Update: DataLens Streaming Project: Data Limitations and Cleaning Summary
+## [COMMS-08] Internal – Sprint 1: Dataset Review Summary (Users & Ratings)  
+**Date:** 19/06/2026 02:30 PM  
+**From:** Andrew Chung `<a.chung@datalens.com>`  
+**To:** Bhanu Prakash `<b.prakash@datalens.com>`  
+**Cc:** da-team2  
+**Subject:** Users and Ratings Dataset Review Summary
 
 Dear Bhanu,
 
@@ -272,16 +293,17 @@ Please review and let us know if anything else should be added before we finalis
 
 Kind regards,
 
-Andrew Chung
+Andrew Chung  
 DataLens Analytics Team
 
 ---
 
-## [COMMS-09] Internal – Sprint 1 Close: Next Phase Briefing
-**Date:** 22/06/2026 10:15 AM
-**From:** Bhanu Prakash `<b.prakash@datalens.com>`
-**To:** da-team2
-**Subject:** Re: Update: DataLens Streaming Project: Data Limitations and Cleaning Summary
+## [COMMS-09] Internal – Sprint 1 Close: Next Phase Briefing  
+**Date:** 22/06/2026 10:15 AM  
+**From:** Bhanu Prakash `<b.prakash@datalens.com>`  
+**To:** da-team2  
+**Subject:** Sprint 1 Close: Next Phase Briefing
+**Attachments:** `StreamFlix_Database_Schema_Design.docx`, `StreamFlix_Table_Creation_Specification.docx`
 
 Dear Team,
 
@@ -293,16 +315,16 @@ Great work so far and keep up the momentum!
 
 Regards,
 
-Bhanu Prakash
+Bhanu Prakash  
 Product Owner
 
 ---
 
-## [COMMS-10] Internal – Sprint 2: Python Mapping Help Request
+## [COMMS-10] Internal – Sprint 2: Python Mapping Help Request  
 **Date:** 22/06/2026 12:00 PM  
 **From:** Ben Powers `<b.powers@datalens.com>`  
 **To:** da-team2  
-**Subject:** Python Mapping Help — Recommendations  
+**Subject:** Python Mapping Help — Recommendations
 
 Hi,
 
@@ -320,7 +342,7 @@ Ben
 
 ---
 
-## [COMMS-11] Internal – Sprint 2: Python Mapping Guidance
+## [COMMS-11] Internal – Sprint 2: Python Mapping Guidance  
 **Date:** 22/06/2026 12:00 PM  
 **From:** Rakhi Porwad `<r.porwad@datalens.com>`  
 **To:** Ben Powers `<b.powers@datalens.com>`  
@@ -350,32 +372,183 @@ Following these steps will keep things manageable and make it much easier to deb
 
 Let me know if you’d like some guidance on how to structure or merge the datasets.
 
-Best regards,  
+Best regards,
+
 Rakhi Porwad  
 DataLens Analytics Team
 
 ---
 
-## [COMMS-12] Internal – Sprint 2: Client Request for Rating Insights
-**Date:** 23/06/2026 11:45 AM
-**From:** Bhanu Prakash `<b.prakash@datalens.com>`
-**To:** da-team2
-**Subject:** Re: Update: DataLens Streaming Project: Data Limitations and Cleaning Summary
+## [COMMS-12] Internal – Sprint 2: Client Request for Rating Insights  
+**Date:** 23/06/2026 11:45 AM  
+**From:** Bhanu Prakash `<b.prakash@datalens.com>`  
+**To:** da-team2  
+**Subject:** Fwd: Suggestion – Rating Insights
 
 Dear Team,
 
-I have just heard/received a message from the client during the Sprint Review. This isn’t a formal request it is more of a “thinking on the fly” moment. We won’t be responding today as we are in the middle of a sprint review. However, this is a great opportunity to practise writing relevant SQL queries and clearly documenting your thinking for non-technical stakeholders
+I have just heard/received a message from the client during the Sprint Review. This isn’t a formal request it is more of a “thinking on the fly” moment. We won’t be responding today as we are in the middle of a sprint review. However, this is a great opportunity to practise writing relevant SQL queries and clearly documenting your thinking for non-technical stakeholders.
 
 Regards,
-Product Owner.
 
-> From: BASH <bash@streamflix.com>
-> Sent: 23, June, 2026 11:35AM
-> To: Product Owner
-> Subject: Streamflix Sprint 2 Update
+Bhanu Prakash  
+Product Owner  
+
+> **Forwarded message**  
+> **From:** BASH <bash@streamflix.com>  
+> **Sent:** 23/06/2026 11:35 AM  
+> **To:** Product Owner  
+> **Subject:** Suggestion: Rating Insights
 > 
 > Good morning!
-> Thanks again for the updates they’ve been really helpful. A thought came to mind: it might be useful to get average ratings per movie and also see how they vary between free and premium users.  > No rush just something to think about.
+> Thanks again for the updates they’ve been really helpful. A thought came to mind: it might be useful to get average ratings per movie and also see how they vary between free and premium users. 
+>
+> No rush just something to think about.
 > 
 > Best regards,
+> 
 > Bash
+
+---
+
+## [COMMS-13] Internal – Sprint 3: Client Request for Age-Group Visualisations  
+**Date:** 30/06/2026 01:00 PM  
+**From:** Bhanu Prakash `<b.prakash@datalens.com>`  
+**To:** da-team2  
+**Subject:** Fwd: Request: Age-Group Visualisations
+
+Dear Team,
+
+I have just received the below email from the client during the Sprint Review.
+
+Let’s take a moment to consider how these changes may affect our visualisations and identify the steps required to implement them. You can complete this directly using SQL queries, so there is no need to return to Python to regenerate the graphs.
+
+Please update the relevant SQL queries, refresh the MySQL data imports, and amend the affected Power BI visuals accordingly.
+
+Regards,
+
+Bhanu Prakash  
+Product Owner  
+
+> **Forwarded message**  
+> **From:** BASH `<bash@streamflix.com>`  
+> **Sent:** 30/06/2026 12:30 PM  
+> **To:** Product Owner  
+> **Subject:** Request: Age-Group Visualisations
+>
+> Good morning,
+>
+> I hope the dashboard development is progressing well.
+>
+> We would like to make a small update to the user segmentation. Please group users into specific age brackets and reflect these groups in the relevant dashboard visualisations.
+>
+> The requested age groups are:
+>
+> - 0–10 years
+> - 11–20 years
+> - 21–30 years
+> - 31–40 years
+> - 41–50 years
+> - And subsequent age ranges as appropriate
+>
+> Best regards,
+>
+> Bash
+
+---
+
+## [COMMS-14] Internal – Sprint 3: Age-Grouping Update Confirmation  
+**Date:** 30/06/2026 02:30 PM  
+**From:** Sabahat Naz `<s.naz@datalens.com>`  
+**To:** Bhanu Prakash `<b.prakash@datalens.com>`  
+**Cc:** da-team2  
+**Subject:** Age-Grouping Update for Dashboard Visualisations
+
+Dear Bhanu,
+
+Thank you for the update and for sharing the client’s request.
+
+We understand the requirement to group users into defined age brackets—0–10, 11–20, 21–30, 31–40, 41–50, and subsequent ranges—and reflect these changes across the dashboard visualisations.
+
+We will implement the age-banding logic directly in SQL, refresh the MySQL data imports, and update all affected Power BI visuals accordingly. We will also review each relevant report page to ensure that the updated segmentation is applied consistently across charts and insights.
+
+We will prioritise this change and proceed with the required updates.
+
+Regards,
+
+Sabahat Naz  
+DataLens Analytics Team
+
+---
+
+## [COMMS-15] Internal – Sprint 3: Client Dashboard Feedback
+**Date:** 02/07/2026 09:30 AM
+**From:** Bhanu Prakash `<b.prakash@datalens.com>`
+**To:** da-team2
+**Subject:** Fwd: Dashboard Feedback and Requested Changes
+
+Dear Team,
+
+Please see the below email from the client following the dashboard presentation.
+
+The client has requested an additional visualisation and would like us to confirm whether the requested change is feasible and when an updated dashboard could be expected.
+
+Kind regards,
+
+Bhanu Prakash
+Product Owner
+
+> **Forwarded message**
+> **From:** BASH `<bash@streamflix.com>`
+> **Sent:** 02/07/2026 09:30 AM
+> **To:** Product Owner
+> **Subject:** Dashboard Feedback and Requested Changes
+>
+> Good morning,
+>
+> Thank you for presenting your dashboards. Overall, I’m impressed with the work your team has done! However, I’d like to request a couple of changes:
+> 
+> - Could you create a graph showing the evolution of gender preferences among women over the past 50 years?
+> - For the data on movies, I’d like the dashboard to only include films released after 1980.
+>
+> Can you let me know if these changes are feasible and, if so, when we can expect the updated dashboard? 
+>
+> Thanks,
+>
+> Bash
+
+---
+
+## [COMMS-16] Internal – Sprint 3: Draft Response to Client Feedback
+**Date:** 02/07/2026 11:30 AM  
+**From:** Andrew Chung `<a.chung@datalens.com>`  
+**To:** Bhanu Prakash `<b.prakash@datalens.com>`  
+**Cc:** da-team2  
+**Subject:** Draft for Review: Response to Client Feedback
+
+Hi Bhanu,
+
+Please review the draft response below to the client’s feedback following the dashboard presentation.
+
+> **Draft client response**
+>
+> Dear Bash,
+>
+> Thank you for the fantastic feedback during our final presentation. We are thrilled to hear that you are impressed with the dashboards the team has delivered.
+>
+> Regarding your requested modifications, we have just reached our final project deadline and are currently compiling our complete project handover package. Because we have concluded the agreed-upon development sprints, we cannot implement new functional changes directly into this version of the dashboards. However, if you would like to formally extend the scope to include these features, we would be happy to discuss this as a separate Change Request phase.
+>
+> In the meantime, we want to ensure you are fully equipped as you deploy the current system. As part of our final delivery, we are handing over all core project assets, including the interactive dashboard files, the underlying datasets, and the complete database configuration scripts.
+>
+> With these handovers, here is how those refinements can be approached:
+>
+> Filtering for post-1980 films: Since your team will have full ownership of the dashboard files and configuration scripts, this is highly achievable. A simple date filter or slicer can be applied directly to the dashboard interface, or the underlying data query can be restricted at the database level before it populates the visual layer.
+>
+> 50-Year Gender Preference Evolution Graph: Our current data model maps StreamFlix's specific user profiles, movie catalogue and user ratings. Because this data focuses entirely on your active platform users, it does not inherently capture the historical demographic data required to map a 50-year macro trend. To help your team or a future developer integrate this external data down the road, we have included our final [database schema and data model blueprints](../database-design/database_design_documentation.md) within the handover package.
+>
+> We will be forwarding the secure download link to the complete handover package by the end of the day to ensure a smooth transition. It has been an absolute pleasure collaborating with you and the StreamFlix team on this project.
+>
+> Best regards,
+>
+> [Your Name]
+> DataLens Analytics Team

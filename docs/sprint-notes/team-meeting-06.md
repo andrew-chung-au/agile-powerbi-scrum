@@ -37,3 +37,8 @@ The team agreed to:
 ## Next steps
 
 With the outstanding Sprint 2 work still being finalised, the team will continue completing the remaining tasks and keeping documentation up to date across GitHub and Jira. Once these items are finished, the project will be ready to move into the next stage with a clear record of completed work.
+
+## Related Documents
+
+* **Communication Log:** [Sprint 2 Communication History](../communication/communication_log.md)
+* **Design Specifications:** [Database Schema Design](../specifications/StreamFlix_Database_Schema_Design.md), [Table Creation Specification](../specifications/StreamFlix_Table_Creation_Specification.md)

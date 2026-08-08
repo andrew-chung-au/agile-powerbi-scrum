@@ -1,0 +1,129 @@
+table _Measures
+	lineageTag: c937de38-5199-42a5-87fc-22231b8cd2bc
+
+	measure 'Total Ratings' = COUNTROWS(ratings_clean)
+		formatString: 0
+		lineageTag: c57f1a47-b24c-4574-844e-ef551dc4ad9c
+
+	measure 'Average Rating' = AVERAGE(ratings_clean[Rating])
+		lineageTag: 117fa0bd-0a6e-4c63-ae1f-b12a42fbb714
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Raters = DISTINCTCOUNT(ratings_clean[UserID])
+		formatString: 0
+		lineageTag: 5e5c10d3-0ba3-4c2f-8870-1834fd2e30b5
+
+	measure 'Rated Movies' = DISTINCTCOUNT(ratings_clean[MovieID])
+		formatString: 0
+		lineageTag: 0f9fc2c3-e6b7-4088-b711-14a99b2b11cc
+
+	measure 'Subscriber Count' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Users[UserID]),
+			    Users[SubscriptionStatus] = "Subscriber"
+			)
+		formatString: 0
+		lineageTag: ec28ef5c-269e-4afd-93ee-1d5ade29fea5
+
+	measure 'Free User Count' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Users[UserID]),
+			    Users[SubscriptionStatus] = "Free"
+			)
+		formatString: 0
+		lineageTag: f326a799-fa42-4550-aa42-dd81f970f24b
+
+	measure 'Avg Watch Time' = AVERAGE(Users[TotalWatchTime])
+		lineageTag: d0ca78fb-fa5c-4fdd-95aa-89a69a4fa7c8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Views' = SUM(movies_clean[Total Views])
+		formatString: 0
+		lineageTag: dd1aad68-ea84-4945-a637-02a2134daa28
+
+	measure 'Top Viewed Movie Rank' =
+			
+			RANKX(
+			    ALL(movies_clean[Movie_Title]),
+			    [Total Views],
+			    ,
+			    DESC,
+			    DENSE
+			)
+		formatString: 0
+		lineageTag: 6d89ef4e-e6e7-4c1b-9e99-7638143ff94b
+
+	measure 'Ratings by Genre' = COUNTROWS(ratings_clean)
+		formatString: 0
+		lineageTag: 0bf0d238-d763-4a3e-97e8-09c36e4100c0
+
+	measure 'Average Rating by Genre' = AVERAGE(ratings_clean[Rating])
+		lineageTag: ea673925-5d79-404f-9193-d4f5237cc5a8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Genre Share' =
+			
+			DIVIDE(
+			    [Ratings by Genre],
+			    CALCULATE([Ratings by Genre], ALL(genres))
+			)
+		lineageTag: b607e32c-94a4-4f1c-83ca-c3bdadb6231f
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ratings Count' =
+			
+			COUNT(ratings_clean[RatingID])
+		formatString: 0
+		lineageTag: 5eba7ba2-dadb-442e-b92d-50c19178ba7b
+
+	measure 'Avg Rating (Free)' =
+			
+			CALCULATE(
+			    AVERAGE(ratings_clean[Rating]),
+			    Users[SubscriptionStatus] = "Free"
+			)
+		lineageTag: 770f8c84-6d2e-47af-9c9f-85a855e502ba
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Rating (Subscriber)' =
+			
+			CALCULATE(
+			    AVERAGE(ratings_clean[Rating]),
+			    Users[SubscriptionStatus] = "Subscriber"
+			)
+		lineageTag: 10d16b44-e988-4c27-8d80-dbaa5c6b8273
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rating Variance' =
+			
+			[Avg Rating (Subscriber)] - [Avg Rating (Free)]
+		lineageTag: abc5e060-3d39-4d81-adbd-a71b8c4db52f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Users' = COUNTROWS(Users)
+		formatString: 0
+		lineageTag: cd9188c3-a06e-486f-abe1-8d46a957b51a
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

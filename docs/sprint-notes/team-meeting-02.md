@@ -9,7 +9,7 @@ This second team meeting was used to confirm how the team will track work, manag
 
 ## Project workflow summary
 
-The team finalised the internal project coordination structure and agreed to use Jira as the main platform for managing project tasks, sprint progress, and deliverables, rather than using alternatives such as Trello.
+The team reviewed the Sprint 1 Backlog document (`StreamFlix_Sprint_1_Backlog`) shared by Product Owner (Bhanu Prakash `[COMMS-04]`). The team agreed to manage sprint tasks, user stories, and deliverables using Jira.
 
 The agreed Jira workflow is:
 - **Backlog:** Long-term project requirements and incoming tasks.
@@ -48,7 +48,7 @@ Following a collaborative review of the dataset, the team agreed on and complete
 
 ## Clarifications required
 
-The team drafted a follow-up email to the client or product owner to resolve ambiguities in several data fields and to request missing information needed for the project.
+The team drafted a follow-up email to the Product Owner (Bhanu Prakash `[COMMS-05]`) to resolve ambiguities in several data fields and to request missing information needed for the project.
 
 ### Missing user-level data
 The team recommended that the missing user-level data be requested as a priority because it directly affects whether the team can deliver the audience-segmented insights expected by 1 July.
@@ -77,14 +77,19 @@ The team agreed to:
 - verify that all team members have the correct access to update tasks in Jira,
 - break large backlog items into smaller and more actionable subtasks,
 - review the shared Git and Jira guides to maintain a consistent workflow,
-- and send the final clarification email to the client.
+- and submit the data limitations and clarification email to the Product Owner.
 
 ## Client follow-up
 
-A clarification email was sent to Bhanu outlining the data limitations, the cleaning summary, and the outstanding questions about the dataset fields.
+A clarification email was sent to the Product Owner (Bhanu Prakash `[COMMS-05]`) outlining the data limitations, the cleaning summary, and the outstanding questions about the dataset fields.
 
 The email explained that, without the missing user-level data, the analysis would be limited to movie-level trends and would not be able to deliver the more targeted audience insights requested in the project brief. It also requested confirmation about the meaning of the Language, Country, and Total Views fields so the dataset can be interpreted correctly.
 
 ## Next steps
 
 The next phase of work depends on the client’s response to the clarification questions. Once the feedback is received and the dataset structure is confirmed, the team will review the final data model and begin the dashboard design phase.
+
+## Related Documents
+
+* **Communication Log:** [`[COMMS-03] StreamFlix Raw Data`, `[COMMS-04] Backlog Shared`, `[COMMS-05] Data Limitations and Cleaning Summary`](../communication/communication_log.md)
+* **Backlog Specification:** [StreamFlix Sprint 1 Backlog](../specifications/StreamFlix_Sprint_1_Backlog.md)

@@ -1,0 +1,82 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "32dd0ae843de46f5abcf",
+  "position": {
+    "x": 6,
+    "y": 528,
+    "z": 5000,
+    "height": 110,
+    "width": 1274,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Key Insights",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "11pt",
+                      "textDecoration": "underline"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Genre ratings are closely grouped around ~3.0, so acquisition decisions should not rely on average rating alone.",
+                    "textStyle": {
+                      "fontSize": "10.5pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Top preferred genres change by country and age band, showing the need for localised content acquisition.",
+                    "textStyle": {
+                      "fontSize": "10.5pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Subscriber and Free users show different movie-level results, so subscriber-focused content should be prioritised for the paid model.",
+                    "textStyle": {
+                      "fontSize": "10.5pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Use rating count with average rating to avoid selecting movies with high ratings but very low engagement.",
+                    "textStyle": {
+                      "fontSize": "10.5pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

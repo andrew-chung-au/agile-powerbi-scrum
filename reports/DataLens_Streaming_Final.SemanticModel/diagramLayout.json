@@ -1,0 +1,99 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 187.19999694824219,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 58,
+            "y": 285
+          },
+          "nodeIndex": "movies_clean",
+          "nodeLineageTag": "9de6200d-052f-4f5d-98a9-c26b34088353",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 60,
+            "y": 0
+          },
+          "nodeIndex": "movie_genres",
+          "nodeLineageTag": "7f9960c7-0e02-4718-8f16-1a81ab0d28d5",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 399,
+            "y": 0
+          },
+          "nodeIndex": "genres",
+          "nodeLineageTag": "12a82495-cf00-4a06-8287-e8eb88f3c72f",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 735,
+            "y": 88
+          },
+          "nodeIndex": "Users",
+          "nodeLineageTag": "ee381fca-351c-4a52-b01c-a149b46fe457",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1022,
+            "y": 33.5
+          },
+          "nodeIndex": "_Measures",
+          "nodeLineageTag": "c937de38-5199-42a5-87fc-22231b8cd2bc",
+          "size": {
+            "height": 536,
+            "width": 269
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 402,
+            "y": 299
+          },
+          "nodeIndex": "ratings_clean",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

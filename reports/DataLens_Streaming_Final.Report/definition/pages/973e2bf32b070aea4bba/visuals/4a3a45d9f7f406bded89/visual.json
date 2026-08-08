@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "4a3a45d9f7f406bded89",
+  "position": {
+    "x": 1056.7437031589648,
+    "y": 636.72185752755036,
+    "z": 2000,
+    "height": 83.27814247244963,
+    "width": 223.25629684103515,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "advancedSlicerVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Users"
+                    }
+                  },
+                  "Property": "SubscriptionStatus"
+                }
+              },
+              "queryRef": "Users.SubscriptionStatus",
+              "nativeQueryRef": "SubscriptionStatus"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {}
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
