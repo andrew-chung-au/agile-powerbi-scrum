@@ -1,0 +1,112 @@
+table genres
+	lineageTag: 12a82495-cf00-4a06-8287-e8eb88f3c72f
+
+	column GenreID
+		dataType: int64
+		formatString: 0
+		lineageTag: 7a4ba0ca-014e-48e4-a72d-bd2b8871ce44
+		summarizeBy: none
+		sourceColumn: GenreID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Genre_Name
+		dataType: string
+		lineageTag: 4ecaa05e-e276-4177-a4e9-720ac71ddbf8
+		summarizeBy: none
+		sourceColumn: Genre_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column GenreColour = ```
+			
+			SWITCH(
+			    [Genre_Name],
+			
+			    // Core genres
+			    "Action", "#d62728",          // strong red – intensity, energy
+			    "Adventure", "#ff7f0e",       // orange – excitement, exploration
+			    "Animation", "#66c2a5",       // soft aqua – friendly, imaginative
+			    "Children's", "#17becf",      // bright teal – playful, friendly
+			    "Comedy", "#ffbf00",          // warm yellow – light, fun
+			    "Crime", "#8c564b",           // muted brown – gritty, grounded
+			    "Documentary", "#1b9e77",     // deep green – factual, grounded
+			    "Drama", "#1f77b4",           // deep blue – serious, grounded
+			    "Fantasy", "#8da0cb",         // lavender-blue – magical, dreamy
+			    "Film-Noir", "#4d4d4d",       // charcoal grey – moody, shadowy
+			    "Horror", "#4b0082",          // dark indigo – eerie, atmospheric
+			    "Musical", "#e78ac3",         // bright pink – expressive, lively
+			    "Mystery", "#7570b3",         // muted purple – enigmatic, subtle
+			    "Romance", "#e377c2",         // soft pink – emotional, warm
+			    "Sci-Fi", "#7f7f7f",          // grey – futuristic, metallic
+			    "Thriller", "#2ca02c",        // sharp green – tension, alertness
+			    "War", "#aec7e8",             // pale blue – historical, somber
+			    "Western", "#c49c94",         // dusty tan – desert, rustic
+			
+			    BLANK()
+			)
+			
+			```
+		lineageTag: 9a0fdce1-b25d-43f2-9970-5693f79ebc0f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Genre Group' =
+			
+			SWITCH(
+			    TRUE(),
+			    genres[Genre_Name] = "Comedy", "Comedy",
+			    genres[Genre_Name] = "Drama", "Drama",
+			    genres[Genre_Name] = "Action", "Action",
+			    genres[Genre_Name] = "Thriller", "Thriller",
+			    genres[Genre_Name] = "Romance", "Romance",
+			    "Other"
+			)
+		lineageTag: f6d52deb-f3f6-4bb7-9e4b-bef7c35702ad
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Genre_Total_Views =
+			
+			SUMX(
+			    FILTER(
+			        movie_genres,
+			        movie_genres[GenreID] = genres[GenreID]
+			    ),
+			    RELATED(movies_clean[Total Views])
+			)
+		formatString: 0
+		lineageTag: d0b3362a-69e3-4871-b01c-522c7652d82d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Genre_View_Rank =
+			
+			RANKX(
+			    ALL(genres),
+			    genres[Genre_Total_Views],
+			    ,
+			    DESC,
+			    DENSE
+			)
+		formatString: 0
+		lineageTag: 2aab4635-91ca-452e-ae29-84eedfac43a1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition genres = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Andrew\Documents\Generation Australia\Agile Project\Data\Processed\genres.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"GenreID", Int64.Type}, {"Genre_Name", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

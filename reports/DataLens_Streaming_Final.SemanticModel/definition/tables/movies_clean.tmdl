@@ -1,0 +1,145 @@
+table movies_clean
+	lineageTag: 9de6200d-052f-4f5d-98a9-c26b34088353
+
+	column MovieID
+		dataType: int64
+		formatString: 0
+		lineageTag: ff43c483-ed68-4a37-aa8a-e85ee1b82dab
+		summarizeBy: none
+		sourceColumn: MovieID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Movie_Title
+		dataType: string
+		lineageTag: 17d51165-1b24-4e1c-80e6-66f0a2f70f59
+		summarizeBy: none
+		sourceColumn: Movie_Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: bac917ce-dd6b-4f79-9cfe-f803a9c1896a
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Language
+		dataType: string
+		lineageTag: 970e8178-af3a-457c-851e-bc5e77e79d9d
+		summarizeBy: none
+		sourceColumn: Language
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 89ddf4bb-aaee-4cf5-8585-fb9be3de7b8e
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Views'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6f0cad91-d588-4467-a754-f125f6f6b793
+		summarizeBy: sum
+		sourceColumn: Total Views
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Movie Era' =
+			
+			SWITCH(
+			    TRUE(),
+			    movies_clean[Year] < 1980, "Vintage & Heritage (Pre-1980)",
+			    movies_clean[Year] < 1990, "The 80s Nostalgia (1980-1989)",
+			    movies_clean[Year] < 2000, "The 90s Core (1990-1999)",
+			    "Millennium Classics (2000)"
+			)
+		lineageTag: e4e8328d-a1c4-4f2d-9881-0f77e72e43a1
+		summarizeBy: none
+		sortByColumn: 'Movie Era Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Movie Era Sort' =
+			
+			SWITCH(
+			    TRUE(),
+			    movies_clean[Year] < 1980, 1,
+			    movies_clean[Year] < 1990, 2,
+			    movies_clean[Year] < 2000, 3,
+			    4
+			)
+		formatString: 0
+		lineageTag: d17ca287-86f4-422d-9089-d1b3772bbac4
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column MovieEraColour = ```
+			
+			SWITCH(
+			    [Movie Era],
+			    "Vintage & Heritage (Pre-1980)", "#8c564b",     // muted brown – classic, archival
+			    "The 80s Nostalgia (1980-1989)", "#ff7f0e",     // warm orange – retro, vibrant
+			    "The 90s Core (1990-1999)", "#1f77b4",        // deep blue – contemporary, mainstream
+			    "Millennium Classics (2000)", "#17becf",           // bright teal – fresh, modern
+			    BLANK()
+			)
+			
+			```
+		lineageTag: c7e0bfc9-ea25-4414-b0c6-d10b7097f6b2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Genres = ```
+			
+			VAR GenreTable = ADDCOLUMNS(
+			    RELATEDTABLE(movie_genres),
+			    "GenreName", RELATED(genres[Genre_Name]),
+			    "Rank", RELATED(genres[Genre_View_Rank])
+			)
+			VAR Sorted = TOPN(2, GenreTable, [Rank], ASC)
+			VAR Genre1 = MINX(
+			    TOPN(1, GenreTable, [Rank], ASC), 
+			    [GenreName]
+			)
+			VAR Genre2 = MINX(
+			    TOPN(1, EXCEPT(Sorted, TOPN(1, GenreTable, [Rank], ASC)), [Rank], ASC), 
+			    [GenreName]
+			)
+			VAR TotalCount = COUNTROWS(RELATEDTABLE(movie_genres))
+			
+			RETURN
+			    SWITCH(TRUE(),
+			        TotalCount > 2, Genre1 & ", " & Genre2 & ", +",
+			        TotalCount = 2, Genre1 & ", " & Genre2,
+			        Genre1
+			    )
+			```
+		lineageTag: 7dec82f4-522b-46c5-b39f-0d4fbb1dee7c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition movies_clean = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Andrew\Documents\Generation Australia\Agile Project\Data\Processed\movies_clean.csv"),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"MovieID", Int64.Type}, {"Movie_Title", type text}, {"Year", Int64.Type}, {"Language", type text}, {"Country", type text}, {"Total Views", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

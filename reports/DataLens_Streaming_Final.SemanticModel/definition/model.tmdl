@@ -1,0 +1,26 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-AU
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["movies_clean","movie_genres","genres","ratings_clean","Users","_Measures"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table movies_clean
+ref table movie_genres
+ref table genres
+ref table ratings_clean
+ref table DateTableTemplate_8f6665a3-fc7b-4108-9e58-bb72662d65d5
+ref table LocalDateTable_1287faab-b364-4306-8083-3d0eeae96142
+ref table Users
+ref table _Measures
+ref table LocalDateTable_351929f2-999a-43e4-bf66-02322ec35032
+
+ref cultureInfo en-US
+

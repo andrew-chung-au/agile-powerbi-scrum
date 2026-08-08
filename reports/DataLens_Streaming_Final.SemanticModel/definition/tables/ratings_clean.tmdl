@@ -1,0 +1,100 @@
+table ratings_clean
+	lineageTag: e709c350-f0b4-4978-8c4a-f1e9bb6a38c3
+
+	column RatingID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a3e097c-ea61-4798-9a84-7b772b27af6c
+		summarizeBy: count
+		sourceColumn: RatingID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserID
+		dataType: string
+		lineageTag: 34f236ed-392b-4c96-af40-96b14d2ee059
+		summarizeBy: none
+		sourceColumn: UserID
+
+		annotation SummarizationSetBy = Automatic
+
+	column MovieID
+		dataType: int64
+		formatString: 0
+		lineageTag: 44d0d0fe-0162-4be0-9d39-6449d2b377d5
+		summarizeBy: none
+		sourceColumn: MovieID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rating
+		dataType: double
+		lineageTag: 47968954-2602-405d-8a62-61b8ce826663
+		summarizeBy: sum
+		sourceColumn: Rating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Timestamp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6f189448-d7e2-43e1-abc1-125b445e7b08
+		summarizeBy: none
+		sourceColumn: Timestamp
+
+		variation Variation
+			isDefault
+			relationship: 80365833-873e-467b-b286-bed203ff6985
+			defaultHierarchy: LocalDateTable_1287faab-b364-4306-8083-3d0eeae96142.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rating Date' =
+			
+			DATEVALUE(ratings_clean[Timestamp])
+		formatString: General Date
+		lineageTag: 62029f02-4b89-41e3-b686-28b31465db2a
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: bbdc6d5a-6914-4999-98c6-74c47a892b07
+			defaultHierarchy: LocalDateTable_351929f2-999a-43e4-bf66-02322ec35032.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rating Month Number' = MONTH(ratings_clean[Rating Date])
+		formatString: 0
+		lineageTag: a90d7103-11e0-467f-98e5-72bf2d15d22c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rating Month' = FORMAT(ratings_clean[Rating Date],"MMM")
+		lineageTag: 1514486c-cd84-4ef0-a108-ee583051dee4
+		summarizeBy: none
+		sortByColumn: 'Rating Month Number'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ratings_clean = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Andrew\Documents\Generation Australia\Agile Project\Data\Raw\Ratings_Dataset.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"RatingID", Int64.Type}, {"UserID", type text}, {"MovieID", Int64.Type}, {"Rating", type number}, {"Timestamp", type datetime}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [RatingID] <> 1183 and [RatingID] <> 7937)
+				in
+				    #"Filtered Rows"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

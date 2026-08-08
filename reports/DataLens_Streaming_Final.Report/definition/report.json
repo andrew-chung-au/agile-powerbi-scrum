@@ -1,0 +1,111 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY26SU05",
+      "reportVersionAtImport": {
+        "visual": "2.9.0",
+        "report": "3.3.0",
+        "page": "2.3.1"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY26SU05",
+          "path": "BaseThemes/CY26SU05.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Device_Age_Heatmap685086387977464.png",
+          "path": "Device_Age_Heatmap685086387977464.png",
+          "type": "Image"
+        },
+        {
+          "name": "Device_Country_Bar636662592367201.png",
+          "path": "Device_Country_Bar636662592367201.png",
+          "type": "Image"
+        },
+        {
+          "name": "Device_User_Bar8408515345446285.png",
+          "path": "Device_User_Bar8408515345446285.png",
+          "type": "Image"
+        },
+        {
+          "name": "New_AgeGrps_User_Distribution_671462318900546.png",
+          "path": "New_AgeGrps_User_Distribution_671462318900546.png",
+          "type": "Image"
+        },
+        {
+          "name": "Subscription_Status_Distributi5043634613820672.png",
+          "path": "Subscription_Status_Distributi5043634613820672.png",
+          "type": "Image"
+        },
+        {
+          "name": "Top_Genres19639875283090535.png",
+          "path": "Top_Genres19639875283090535.png",
+          "type": "Image"
+        },
+        {
+          "name": "Top10_movies99854091050861.png",
+          "path": "Top10_movies99854091050861.png",
+          "type": "Image"
+        },
+        {
+          "name": "User_Country_Bar05697873179283508.png",
+          "path": "User_Country_Bar05697873179283508.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true,
+    "customMemoryLimit": "1048576",
+    "customTimeoutLimit": "225"
+  }
+}

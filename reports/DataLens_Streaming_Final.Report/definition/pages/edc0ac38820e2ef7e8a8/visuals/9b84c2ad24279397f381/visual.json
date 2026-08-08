@@ -1,0 +1,128 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "9b84c2ad24279397f381",
+  "position": {
+    "x": 1,
+    "y": 513,
+    "z": 4000,
+    "height": 124,
+    "width": 1279,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Key Insights",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "11pt",
+                      "textDecoration": "underline"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Balanced device usage",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10.5pt"
+                    }
+                  },
+                  {
+                    "value": " - Mobile, Desktop, Tablet and Smart TV each account for 23–27% of users, indicating a consistent multi-device viewing experience.",
+                    "textStyle": {
+                      "fontSize": "10.5pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Mobile & Smart TV lead slightly",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10.5pt"
+                    }
+                  },
+                  {
+                    "value": " - Mobile is the preferred device in Canada, France, UK and USA, while Smart TV performs strongest in India and USA.",
+                    "textStyle": {
+                      "fontSize": "10.5pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Broad audience reach",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10.5pt"
+                    }
+                  },
+                  {
+                    "value": " - Users are well distributed across all age groups and countries, showing the platform appeals to a diverse global audience.",
+                    "textStyle": {
+                      "fontSize": "10.5pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Consistent user behaviour",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10.5pt"
+                    }
+                  },
+                  {
+                    "value": " - Filtering by country or age group changes user counts, but device preferences remain largely consistent, suggesting similar viewing habits across markets.",
+                    "textStyle": {
+                      "fontSize": "10.5pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Business opportunity",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "10.5pt"
+                    }
+                  },
+                  {
+                    "value": " - Maintain a seamless experience across all devices while tailoring marketing and content recommendations by country, age group and subscription status.",
+                    "textStyle": {
+                      "fontSize": "10.5pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

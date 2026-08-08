@@ -1,0 +1,33 @@
+table movie_genres
+	lineageTag: 7f9960c7-0e02-4718-8f16-1a81ab0d28d5
+
+	column MovieID
+		dataType: int64
+		formatString: 0
+		lineageTag: ff0f147f-69dd-42cb-859e-ed623422944c
+		summarizeBy: none
+		sourceColumn: MovieID
+
+		annotation SummarizationSetBy = Automatic
+
+	column GenreID
+		dataType: int64
+		formatString: 0
+		lineageTag: 168a5ff8-fdfa-43f8-b776-f767c3e35bca
+		summarizeBy: none
+		sourceColumn: GenreID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition movie_genres = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Andrew\Documents\Generation Australia\Agile Project\Data\Processed\movie_genres.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"MovieID", Int64.Type}, {"GenreID", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

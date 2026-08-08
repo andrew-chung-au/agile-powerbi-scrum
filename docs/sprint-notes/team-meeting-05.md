@@ -33,7 +33,7 @@ The `Ratings` table links `UserID` and `MovieID` as foreign keys referencing the
 
 During the session, the team identified two duplicate entries in the ratings dataset. In both cases, the same user had rated the same movie on two separate occasions, resulting in different rating values, different rating IDs, and different timestamps.
 
-The team discussed the appropriate approach and agreed that the most recent rating should be retained for analysis in each case, as it represents the user's most current view of the film. The earlier entries will be excluded from the analysis. This decision was documented as part of the sprint record.
+The team discussed the appropriate approach and agreed that the most recent rating by `RatingID` should be retained for analysis in each case, as it represents the user's most current view of the film. The earlier entries will be excluded from the analysis. This decision was documented as part of the sprint record.
 
 ## Client demo
 
@@ -61,9 +61,9 @@ The team noted that this phase would involve preparing the required SQL outputs,
 
 ## Informal client request — ratings by subscription type
 
-During the Sprint Review, the Product Owner relayed an informal message received from the client suggesting it might be useful to see average ratings by movie, segmented by free and premium users.
+During the sprint review, Bhanu Prakash shared an informal suggestion from Bash (`[COMMS-12]`) inquiring whether movie ratings could be compared between free and premium subscribers.
 
-The Product Owner made clear this was not a formal requirement and no immediate response was required. The team reviewed the request together and agreed it was a valuable analytical direction that aligns well with the existing schema, as the `Ratings` and `Users` tables together support this type of segmentation query directly. The team will document the informal client request and develop the relevant SQL queries this sprint so they can support a future client response if required.
+The Product Owner clarified that no formal client reply was required during the review. The team confirmed that the `Ratings` and `Users` tables support this query directly and agreed to write and test the SQL script during Sprint 2 to prepare for future analysis.
 
 ## Key discussion points
 
@@ -82,3 +82,9 @@ The team agreed to:
 ## Next steps
 
 With the database structure fully implemented and validated, the team will move into the data analysis and visualisation phase. Each team member will develop their assigned visualisation, with the duplicate-ratings issue resolved first. The informal client request regarding average ratings by subscription type will be explored as a SQL exercise and prepared for a formal response in the future.
+
+## Related Documents
+
+* **Communication Log:** [`[COMMS-12] Rating Insights Informal Request`](../communication/communication_log.md)
+* **Design Specifications:** [Database Schema Design](../specifications/StreamFlix_Database_Schema_Design.md), [Table Creation Specification](../specifications/StreamFlix_Table_Creation_Specification.md)
+* **Database Deliverable:** [Database Design & Demo Documentation](../database-design/database_design_documentation.md)

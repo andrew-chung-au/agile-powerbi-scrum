@@ -1,103 +1,62 @@
-# AGILE Power BI Scrum
+# DataLens Streaming Analytics (StreamFlix Case Study)
 
-> **Draft README placeholder**
-> This README is a work in progress and will be refined as the project develops.
+**Technical Stack:** SQL (MySQL) | Power BI | Python (Pandas) | Git/GitHub | Jira  
+**Methodology:** Agile / Scrum (3 Sprints)
 
-## Project Overview
+## 📌 Project Overview
+This repository contains the workflow, technical documentation, and final deliverables for **DataLens Streaming**, a team-based data analytics capstone project. 
 
-This repository documents a team-based data analytics project completed as part of the Generation Australia Data Analytics course.
+While the client scenario (StreamFlix) is a simulated business case, the project was executed by applying real-world collaborative practices. Our team operated as a data consulting group, managing the project lifecycle from initial scoping and data engineering through to dashboarding and handover.
 
-The project is designed as a simulated team workflow, but it uses real collaboration practices:
-- GitHub for version control and team coordination,
-- Jira for task tracking,
-- Slack for day-to-day communication,
-- and Power BI for dashboard development and reporting.
+## 🎯 The Business Problem
+**StreamFlix** is an international streaming platform transitioning from a free, ad-supported model to a premium subscription-based service. 
 
-The goal is to show how a data analytics team can work in a structured, professional way from planning through delivery.
+**The Objective:** The business required a data-driven content acquisition strategy to prioritize film genres that will retain existing users while attracting new premium subscribers. 
 
-## Why This Project Exists
+**The Deliverable:** A relational database schema to house user and rating data, alongside an interactive Power BI dashboard providing actionable insights segmented by user demographics, subscription tiers, and geographic locations.
 
-This project was created to:
-- practice real-world team collaboration,
-- build a portfolio-ready analytics project,
-- demonstrate structured version control and documentation,
-- and produce a polished Power BI deliverable for review.
+## 🛠️ Project Lifecycle & Methodology
+The project was delivered over three structured Agile Sprints, coordinated via Jira and GitHub fork-and-pull-request workflows:
 
-## Team Roles
+* **Sprint 1 (Data Foundation & Scoping):** Conducted project kickoff, established [Client Needs](docs/project-initiation/client-needs.md), audited raw CSV datasets, resolved data quality anomalies, and proposed a conceptual Star Schema dimensional model.
+* **Sprint 2 (Database Engineering & EDA):** Designed the [Database Schema](docs/specifications/StreamFlix_Database_Schema_Design.md), implemented the physical MySQL database via our [SQL Setup Guide](docs/database-design/db_setup_guide_for_streamflix.md), established referential integrity, and conducted exploratory data analysis.
+* **Sprint 3 (Business Intelligence & Delivery):** Developed interactive Power BI dashboards, integrated dynamic age-grouping logic via SQL, and delivered the final stakeholder presentation and handover package. (See our [Communication Log](docs/communication/communication_log.md) for stakeholder management).
 
-The team worked with shared responsibilities. Roles may overlap depending on task needs.
+## 👥 Team & Roles
+This project was a collaborative effort by the DataLens Analytics Team, with shared responsibilities across data cleaning, SQL development, and visualization. 
 
-- **Repo maintainer:** manages repository structure and final merges.
-- **Scrum master:** helps coordinate the workflow, keep tasks moving, and support the team process.
-- **Jira setup/support:** helped configure Jira, maintain issue structure, and keep the board usable.
-- **Power BI editor:** works on the dashboard and report development.
-- **Documentation lead:** keeps notes, workflow docs, and README content updated.
-- **Data support contributor:** helps with data cleanup, transformation, and preparation.
-- **Presentation contributor:** organizes screenshots, exports, and showcase assets.
+* **Andrew Chung:** GitHub/Repository Lead & Analytics Contributor ([GitHub](https://github.com/andrew-chung-au))
+* **Sabahat Naz:** Scrum Master & Analytics Contributor ([GitHub](https://github.com/sabnaz1988))
+* **Shanika Kodithuwakku:** Jira Workflow Manager & Analytics Contributor ([GitHub](https://github.com/shimashi2021-del))
+* **Rakhi Porwad:** Analytics Contributor
+* **Shilpa Joseph:** Analytics Contributor ([GitHub](https://github.com/ShilpaDev-prog))
 
-## Project Workflow
-
-The team uses a fork-and-PR workflow with supporting Jira and Slack coordination.
-
-High-level flow:
-1. Fork the repository.
-2. Clone your fork locally.
-3. Create a feature branch.
-4. Work on the task.
-5. Commit and push changes to your fork.
-6. Open a Pull Request for review.
-7. Update Jira and Slack as needed.
-
-A separate team playbook contains the detailed workflow instructions.
-
-## Tools and Technologies
-
-- GitHub
-- Jira
-- Slack
-- Power BI
-- Git
-- Markdown
-
-## Project Deliverables
-
-This project will include:
-- a Power BI report or dashboard,
-- supporting documentation,
-- screenshots and review assets,
-- sprint notes,
-- and workflow/process documentation.
-
-## Repository Structure
-
-Planned structure:
+## 📂 Repository Structure
+The repository is organized to separate raw data, technical documentation, source code, and reporting assets.
 
 ```text
-data/
-docs/
-reports/
-src/
-visuals/
-README.md
-```
+project-root/
+├── data/                  # Raw CSVs and processed, clean data outputs
+├── docs/                  
+│   ├── communication/     # Client correspondence and internal team communication logs
+│   ├── database-design/   # ERD diagrams, schema documentation, and SQL setup guides
+│   ├── sprint-notes/      # Agile meeting notes, sprint reviews, and sprint planning
+│   └── specifications/    # Technical implementation and backlog specifications
+├── src/                   # Jupyter notebooks (Python) containing data cleaning and analysis workflows
+├── reports/               # Final PDF reports and dashboard deliverables
+└── visuals/               # Dashboard mockups and exported charts for presentations
 
-## Current Status
+**🔍 Quick Links to Key Technical Assets:**
+* [Team Playbook & Workflow Guide](docs/team-playbook.md)
+* [MySQL Database Setup Guide (DDL/DML)](docs/database-design/db_setup_guide_for_streamflix.md)
+* [Database Schema Design & ERD](docs/database-design/database_design_documentation.md)
+* [Client Needs & Project Scoping](docs/project-initiation/client-needs.md)
+* [Sprint 2 Client Demo Notes](docs/database-design/demo-presentation-notes.md)
 
-This README is currently a draft and will be refined as the project develops.
+## 🚀 Key Features & Technical Highlights
+* **Relational Database Design:** Transitioned flat files into a normalized Star Schema separating `Users`, `Movies`, `Ratings`, and `Genres`, using a junction table to resolve multi-genre titles.
+* **Data Cleansing:** Standardized text delimiters, extrapolated missing metadata, and handled referential integrity issues such as orphaned user IDs and duplicate ratings.
+* **Cross-Functional Collaboration:** Implemented a structured Git fork-and-PR workflow (governed by our custom [Team Playbook](docs/team-playbook.md)) to coordinate team contributions, manage binary Power BI asset handoffs, and maintain clear documentation covering client requirements and technical specifications.
 
-Planned next steps:
-- finalize the project scope,
-- document team responsibilities,
-- add project outputs and visuals,
-- and strengthen the project summary.
-
-It will eventually include:
-- the project problem statement,
-- the key analysis completed,
-- visual examples,
-- major outcomes,
-- and a short summary of what the team learned.
-
-## Contact
-
-Project team contact details will be added here once finalized.
+## 📬 Contact
+For questions regarding the repository setup, technical implementation, or broader data engineering workflows, please reach out to [Andrew Chung](https://www.linkedin.com/in/andrewchung-cloudai/).

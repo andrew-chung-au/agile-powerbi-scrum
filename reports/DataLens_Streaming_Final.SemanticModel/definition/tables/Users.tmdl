@@ -1,0 +1,158 @@
+table Users
+	lineageTag: ee381fca-351c-4a52-b01c-a149b46fe457
+
+	column UserID
+		dataType: string
+		lineageTag: bb215ed4-0d63-4f94-a289-9a5405f53e04
+		summarizeBy: none
+		sourceColumn: UserID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: 8ece6460-7fce-44c8-86ce-b1d22e3d2bac
+		summarizeBy: none
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: e6293f3c-d390-45c5-abfe-b97888d85cff
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 4747c1fc-5ab1-4f0c-a0bb-aff51ce39096
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubscriptionStatus
+		dataType: string
+		lineageTag: d3205bfe-cb12-4d73-95f4-cd1e672580e4
+		summarizeBy: none
+		sourceColumn: SubscriptionStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalWatchTime
+		dataType: int64
+		formatString: 0
+		lineageTag: bcb3c543-8b71-4724-931c-da7eec5510f4
+		summarizeBy: none
+		sourceColumn: TotalWatchTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column Device
+		dataType: string
+		lineageTag: 88899321-eb79-4b85-8ef2-84d6aef7bf90
+		summarizeBy: none
+		sourceColumn: Device
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Band' =
+			
+			SWITCH(
+			    TRUE(),
+			    Users[Age] >= 0 && Users[Age] <= 10, "Kids & Early Viewers (0-10)",
+			    Users[Age] >= 11 && Users[Age] <= 20, "Teen & Student Audience (11-20)",
+			    Users[Age] >= 21 && Users[Age] <= 30, "Young Adults (21-30)",
+			    Users[Age] >= 31 && Users[Age] <= 40, "Early Career Adults (31-40)",
+			    Users[Age] >= 41 && Users[Age] <= 50, "Mid Career Audience (41-50)",
+			    Users[Age] >= 51 && Users[Age] <= 60, "Pre-Retirement Audience (51-60)",
+			    Users[Age] >= 61, "Senior Viewers (61+)"
+			)
+		lineageTag: c5783ed1-24c7-41d3-8dee-65ac1d4743a9
+		summarizeBy: none
+		sortByColumn: 'Age Band Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Watch-Time Band' =
+			
+			SWITCH(
+			    TRUE(),
+			    Users[TotalWatchTime] < 250, "Low",
+			    Users[TotalWatchTime] < 500, "Medium",
+			    "High"
+			)
+		lineageTag: 6615b6e1-6aa0-4870-931f-3b71d0dd9a0b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Band Sort' =
+			
+			SWITCH(
+			    TRUE(),
+			    Users[Age] >= 0 && Users[Age] <= 10, 1,
+			    Users[Age] >= 11 && Users[Age] <= 20, 2,
+			    Users[Age] >= 21 && Users[Age] <= 30, 3,
+			    Users[Age] >= 31 && Users[Age] <= 40, 4,
+			    Users[Age] >= 41 && Users[Age] <= 50, 5,
+			    Users[Age] >= 51 && Users[Age] <= 60, 6,
+			    Users[Age] >= 61, 7
+			)
+		formatString: 0
+		lineageTag: 350ebe43-e71f-4558-9087-1bc16cf13550
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column AgeColour =
+			
+			SWITCH(
+			    [Age Band],
+			    "Youth & Dependents (0-17)", "#17becf",     // bright teal – energetic, youthful
+			    "Young Professionals (18-34)", "#ff7f0e",  // warm orange – active, dynamic
+			    "Established Families (35-54)", "#1f77b4", // deep blue – stable, grounded
+			    "Mature Audiences (55+)", "#9467bd",       // soft purple – calm, reflective
+			    BLANK()
+			)
+		lineageTag: 8fc40aff-7e3f-4df1-9639-ff1c11942d4e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryColour = ```
+			
+			SWITCH(
+			    [Country],
+			    "Canada", "#d62728",     // red – matches national flag
+			    "USA", "#1f77b4",        // deep blue – matches national flag
+			    "UK", "#9467bd",         // royal purple – heritage tone
+			    "France", "#17becf",     // bright teal – modern, fresh
+			    "Italy", "#2ca02c",      // green – matches national flag
+			    "India", "#ff7f0e",      // saffron – matches national flag
+			    BLANK()
+			)
+			
+			```
+		lineageTag: 32a9ea28-236a-4736-b78c-0619f5570d1a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Users = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Andrew\Documents\Generation Australia\Agile Project\Data\Raw\Users.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"UserID", type text}, {"Age", Int64.Type}, {"Gender", type text}, {"Country", type text}, {"SubscriptionStatus", type text}, {"TotalWatchTime", Int64.Type}, {"Device", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

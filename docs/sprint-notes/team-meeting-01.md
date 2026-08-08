@@ -58,14 +58,14 @@ Following the meeting, the team prepared a set of clarification questions for th
 
 ## Client follow-up
 
-After the meeting, the team sent a clarification email to the client covering data access, success metrics, priority regions, and dashboard stakeholders. This follow-up was intended to support the project outline and reduce uncertainty before the next phase of planning.
+After the meeting, the team drafted clarifying questions covering data access, success metrics, priority regions, and dashboard stakeholders, and submitted them to the Product Owner (Bhanu Prakash `[COMMS-02]`) to review before sending to StreamFlix. This follow-up was intended to support the project outline and reduce uncertainty before the next phase of planning.
 
 ## Immediate actions agreed
 
 The team agreed to:
 - finalise the project outline,
 - document the initial scope in the repository,
-- send clarification questions to the client,
+- submit clarification questions to the Product Owner for review,
 - set up the project workflow through Jira and GitHub,
 - and begin preparing for the data analysis and dashboard design stages.
 
@@ -74,5 +74,6 @@ The team agreed to:
 The next phase of work will depend on the client’s response to the clarification questions and the availability of the required datasets. Once the data environment is confirmed, the team will move into detailed planning, data review, dashboard design, and preparation of the first project version due on 1 July.
 
 ## Related Documents
-* [Client Needs](../project-initiation/client-needs.md)
-* [Project Outline](../project-initiation/project-outline.md)
+
+* **Communication Log:** [`[COMMS-01]`, `[COMMS-02]`](../communication/communication_log.md)
+* **Project Specifications:** [Client Needs](../project-initiation/client-needs.md), [Project Outline](../project-initiation/project-outline.md)

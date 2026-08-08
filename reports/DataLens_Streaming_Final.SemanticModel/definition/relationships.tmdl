@@ -1,0 +1,27 @@
+relationship AutoDetected_6221ec49-8577-4992-b958-34b97b274a17
+	crossFilteringBehavior: bothDirections
+	fromColumn: movie_genres.MovieID
+	toColumn: movies_clean.MovieID
+
+relationship AutoDetected_8fd973f0-6bc8-4351-9675-7aef6d0092cf
+	fromColumn: movie_genres.GenreID
+	toColumn: genres.GenreID
+
+relationship 80365833-873e-467b-b286-bed203ff6985
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ratings_clean.Timestamp
+	toColumn: LocalDateTable_1287faab-b364-4306-8083-3d0eeae96142.Date
+
+relationship AutoDetected_5e7ab6d3-398b-4a49-983b-a81b3ac573b4
+	fromColumn: ratings_clean.MovieID
+	toColumn: movies_clean.MovieID
+
+relationship AutoDetected_7654a47c-58f1-4584-b4e2-ebefc0855c2a
+	fromColumn: ratings_clean.UserID
+	toColumn: Users.UserID
+
+relationship bbdc6d5a-6914-4999-98c6-74c47a892b07
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ratings_clean.'Rating Date'
+	toColumn: LocalDateTable_351929f2-999a-43e4-bf66-02322ec35032.Date
+

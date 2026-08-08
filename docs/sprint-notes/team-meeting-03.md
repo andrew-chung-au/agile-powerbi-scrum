@@ -5,7 +5,7 @@
 **Client:** StreamFlix
 **Meeting purpose:** Dataset Review & Data Exploration
 
-This third team meeting was facilitated by the Product Owner to review and explore the newly received datasets (`Users.csv` and `Ratings_Dataset.csv`) to support Sprint 1 activities and prepare recommendations for schema design.
+This third team meeting was facilitated by the Product Owner (Bhanu Prakash) to review and explore the newly received datasets (`Users.csv` and `Ratings_Dataset.csv`) to support Sprint 1 activities and prepare recommendations for schema design.
 
 ## Meeting Agenda
 
@@ -23,6 +23,16 @@ The team reviewed the structural composition and volume of the provided datasets
 
 - **`Users.csv`**: Contains **6,040 records**
 - **`Ratings_Dataset.csv`**: Contains **10,000 records**
+
+### Stakeholder Data Corrections Applied
+The team reviewed the formal data corrections provided by Bash (`[COMMS-07]`):
+1. Extrapolated missing release years directly from the movie title text.
+2. Resolved the year `"non_def"` to 1995.
+3. Updated the untitled movie entry to *"The Phantom of the Opera"*.
+4. Replaced incorrect hyphen delimiters (`"–"`) with pipe delimiters (`"|"`).
+5. Standardized 5 misspelled *"Dramma"* genre entries to *"Drama"*.
+
+These corrections were applied to produce `movies_refined.csv` on the team workspace, and the exploratory findings summary was sent to the Product Owner by Andrew Chung (`[COMMS-08]`).
 
 ### Key Definitions & Relationships
 **Primary Keys Identified**
@@ -86,3 +96,8 @@ The following immediate actions were assigned to ensure readiness for implementa
 - Finalise the ongoing data validation tasks
 - Review the upcoming schema design proposal
 - Confirm all listed assumptions and observations with relevant stakeholders prior to physical database implementation
+
+## Related Documents
+
+* **Communication Log:** [`[COMMS-06] New Datasets Received`, `[COMMS-07] Client Data Corrections`, `[COMMS-08] Dataset Review Summary`](../communication/communication_log.md)
+* **Sprint Specifications:** [StreamFlix Sprint 1 Backlog](../specifications/StreamFlix_Sprint_1_Backlog.md)
