@@ -1,3 +1,5 @@
+<img src="./visuals/data_lens_logo.png" align="right" width="25%" alt="DataLens Streaming Logo">
+
 # DataLens Streaming Analytics (StreamFlix Case Study)
 
 **Technical Stack:** SQL (MySQL) | Power BI | Python (Pandas) | Git/GitHub | Jira  
