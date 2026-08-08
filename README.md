@@ -23,6 +23,54 @@ While the client scenario (StreamFlix) is a simulated business case, the project
 
 ---
 
+## 📖 Project Story
+
+StreamFlix is transitioning from a free, ad-supported model to a premium subscription service. The core business question was: **what content drives free users to convert to paid subscribers?**
+
+Our analysis showed that:
+
+- Comedy and Drama dominate overall viewing, but they are already well served on the free tier.
+- The biggest opportunity lies in **high-variance titles** – content that free users largely ignore but subscribers rate highly.
+- By acquiring and positioning these “conversion catalyst” titles behind the paywall, StreamFlix can maximise subscription sign-ups while protecting ad revenue from popular free-tier content.
+
+The interactive Power BI dashboard enables the acquisition and marketing teams to target these opportunities by **age band, country, device, and subscription status**, rather than relying on global averages.
+
+---
+
+## 🎯 Key Insights
+
+- **Genre focus:** Drama and Comedy drive most ratings, but acquisition should prioritise high-variance genres (e.g. Sci‑Fi, War, Fantasy, Documentaries) that correlate with premium conversion. [41]
+- **Core audience:** Users aged 35–54 are the most engaged segment; they should be the primary target for premium marketing and regional catalog curation.
+- **Platform balance:** Usage is evenly split across Free vs Subscriber and across devices (Mobile, Smart TV, Desktop, Tablet), supporting a **seamless multi-device experience** with region-specific optimisation.
+
+---
+
+## 🖼️ Visual Highlights
+
+**Executive Overview**
+
+![Executive Overview](visuals/5_executive_overview.png)
+
+*Key metrics: 3,883 movies, 6,040 users, ~10K ratings; Drama and Comedy lead engagement; near 50/50 split between Free and Subscriber.*
+
+**User Footprint**
+
+![User Footprint](visuals/7_user_footprint.png)
+
+*Balanced distribution across age groups, countries, and devices; core engaged audience in the 35–54 age band.*
+
+**Conversion Catalyst**
+
+![Conversion Catalyst](visuals/9_conversion_catalyst.png)
+
+*Top‑Left = “Paywall Goldmine” (high subscriber, low free).  
+Bottom‑Right = “Free‑Tier Hooks” (high free, low subscriber).  
+Bubble size = total views; colour = genre.*
+
+*(For the full narrative and detailed charts, see the [Project Story](docs/project-story.md).)*
+
+---
+
 ## 🛠️ Project Lifecycle & Methodology
 
 The project was delivered over three structured Agile Sprints, coordinated via Jira and GitHub fork-and-pull-request workflows:
@@ -52,6 +100,7 @@ This project was a collaborative effort by the DataLens Analytics Team, with sha
 - [Database Schema Design & ERD](docs/database-design/database_design_documentation.md)
 - [Client Needs & Project Scoping](docs/project-initiation/client-needs.md)
 - [Sprint 2 Client Demo Notes](docs/database-design/demo-presentation-notes.md)
+- [Project Story & Insights](docs/project-story.md)
 
 ---
 
@@ -60,7 +109,6 @@ This project was a collaborative effort by the DataLens Analytics Team, with sha
 The repository is organized to separate raw data, technical documentation, source code, and reporting assets.
 
 ```text
-project-root/
 ├── data/                    # Raw CSVs and processed, clean data outputs
 ├── docs/
 │   ├── communication/       # Client correspondence and internal team communication logs
