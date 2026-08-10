@@ -148,7 +148,7 @@ table Users
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\Andrew\Documents\Generation Australia\Agile Project\Data\Raw\Users.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+			    Source = Csv.Document(File.Contents(DataRoot & "\raw\Users.csv"),[Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"UserID", type text}, {"Age", Int64.Type}, {"Gender", type text}, {"Country", type text}, {"SubscriptionStatus", type text}, {"TotalWatchTime", Int64.Type}, {"Device", type text}})
 				in

@@ -135,7 +135,7 @@ table movies_clean
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\Andrew\Documents\Generation Australia\Agile Project\Data\Processed\movies_clean.csv"),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Source = Csv.Document(File.Contents(DataRoot & "\processed\movies_clean.csv"),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"MovieID", Int64.Type}, {"Movie_Title", type text}, {"Year", Int64.Type}, {"Language", type text}, {"Country", type text}, {"Total Views", Int64.Type}})
 				in

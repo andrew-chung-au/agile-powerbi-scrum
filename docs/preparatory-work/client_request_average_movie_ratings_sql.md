@@ -6,7 +6,7 @@ This query explores the client's idea by calculating the average rating for each
 SELECT 
     mc.MovieID,
     mc.Movie_Title,
-    u.Subscription_Status,
+    u.SubscriptionStatus,
     COUNT(r.RatingID) AS TotalRatings,
     ROUND(AVG(r.Rating), 2) AS AvgRating
 FROM movies_clean mc
@@ -17,7 +17,7 @@ JOIN users u
 GROUP BY 
     mc.MovieID,
     mc.Movie_Title,
-    u.Subscription_Status
+    u.SubscriptionStatus
 ORDER BY 
     AvgRating DESC;
 ```

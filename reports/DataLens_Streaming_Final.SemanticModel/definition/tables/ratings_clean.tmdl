@@ -85,12 +85,11 @@ table ratings_clean
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\Andrew\Documents\Generation Australia\Agile Project\Data\Raw\Ratings_Dataset.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
-				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"RatingID", Int64.Type}, {"UserID", type text}, {"MovieID", Int64.Type}, {"Rating", type number}, {"Timestamp", type datetime}}),
-				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [RatingID] <> 1183 and [RatingID] <> 7937)
-				in
-				    #"Filtered Rows"
+			    Source = Csv.Document(File.Contents(DataRoot & "\processed\ratings_clean.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"RatingID", Int64.Type}, {"UserID", type text}, {"MovieID", Int64.Type}, {"Rating", type number}, {"Timestamp", type datetime}}, "en-GB")
+			in
+			    #"Changed Type"
 
 	changedProperty = Name
 

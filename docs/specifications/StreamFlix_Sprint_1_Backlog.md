@@ -1,5 +1,8 @@
 # StreamFlix Analytics – Sprint 1 Backlog Specification
 
+> **Historical Sprint artifact.** This backlog is retained as evidence of the original plan and acceptance criteria. Current reproducibility guidance starts in the repository [README](../../README.md).
+
+
 **Document:** `StreamFlix_Sprint_1_Backlog`  
 **Author:** Bhanu Prakash (Product Owner)  
 **Project:** DataLens Streaming  

@@ -102,7 +102,7 @@ table genres
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\Andrew\Documents\Generation Australia\Agile Project\Data\Processed\genres.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+			    Source = Csv.Document(File.Contents(DataRoot & "\processed\genres.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"GenreID", Int64.Type}, {"Genre_Name", type text}})
 				in

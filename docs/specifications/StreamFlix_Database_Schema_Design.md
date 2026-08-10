@@ -1,5 +1,8 @@
 # StreamFlix Database Schema Design Specification
 
+> **Historical Sprint artifact.** This document records the team’s original design intent. For the current executable names, types, and constraints, use the [data contract](../data-contract.md) and `database/schema.sql`.
+
+
 **Document:** `StreamFlix_Database_Schema_Design`  
 **Author:** Bhanu Prakash (Product Owner)  
 **Project:** DataLens Streaming  

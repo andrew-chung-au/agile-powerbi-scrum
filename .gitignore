@@ -1,0 +1,15 @@
+# Power BI Desktop project files that are local to one machine.
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# Python and Jupyter local state.
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Local configuration and credentials.
+.env
+.env.*
+!.env.example
