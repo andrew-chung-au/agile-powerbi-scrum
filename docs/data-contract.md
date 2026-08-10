@@ -131,4 +131,4 @@ mysql DataLensStreaming < database/validate.sql
 
 The Python validator requires only the standard library. It checks file presence, exact headers and row counts, primary/foreign-key assumptions, the duplicate-rating rule, JSON syntax, local documentation links, and repository hygiene.
 
-For the Python analysis workflow and notebook status, see [`src/README.md`](../src/README.md). For interpretation limits, see [`analysis-methodology.md`](analysis-methodology.md).
+For the Python analysis workflow and notebook status, see [`src/README.md`](../src/README.md).

@@ -1,6 +1,6 @@
 # Sprint 2 Client Demo — Presentation Notes
 
-> **Historical presentation notes.** Field names and narrative below reflect the Sprint demo. Use the current [data contract](../data-contract.md) and [analysis methodology](../analysis-methodology.md) for reproducible analysis.
+> **Historical presentation notes.** Field names and narrative below reflect the Sprint demo. Use the current [data contract](../data-contract.md) for the reproducible operational schema.
 
 *Created for the Sprint 2 client demo presentation.*
 
