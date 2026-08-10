@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["movies_clean","movie_genres","genres","ratings_clean","Users","_Measures"]
+annotation PBI_QueryOrder = ["DataRoot","movies_clean","movie_genres","genres","ratings_clean","Users","_Measures"]
 
 annotation PBI_ProTooling = ["DevMode"]
 

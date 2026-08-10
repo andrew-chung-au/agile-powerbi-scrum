@@ -200,123 +200,107 @@ Avoid:
 
 ## Power BI workflow
 
-Only **one person** should edit the live Power BI file at a time.
+The repository supports two Power BI collaboration modes. The detailed, version-aware instructions are in the [Power BI source-control workflow](powerbi-git-workflow.md).
 
-That person holds the **handoff slot** until the work is:
-- saved,
-- documented,
-- committed,
-- pushed,
-- and shared with the team.
+### Git-native PBIP mode (preferred for this repository)
 
-### 1. Claim the slot
+The checked-in report is already a Power BI Desktop Project using PBIR report definitions and a TMDL semantic model. Contributors can therefore use ordinary feature branches and PRs for many report and model changes.
 
-Before opening the file, post a message in the pinned Slack thread in the `agile-powerbi-scrum` channel to let the team know you are taking the slot.
+Before editing:
 
-Use a message like:
+- sync `main` and create a feature branch;
+- state which page, visual, measure, relationship, or table you will own;
+- avoid overlapping ownership when another contributor is changing the same report/model object.
+
+After editing:
+
+- inspect the PBIR/TMDL diff;
+- do not stage `.pbi/cache.abf` or `.pbi/localSettings.json`;
+- export a screenshot or PDF for user-visible changes;
+- validate the merged project in Power BI Desktop before publishing.
+
+Concurrent work is practical when contributors touch separate source files. Merge conflicts and semantic conflicts are still possible when the same report element or model object is edited, so coordination remains necessary.
+
+### Legacy binary mode (`.pbix` fallback)
+
+Use the handoff slot when the working artifact is a binary `.pbix`, when a contributor cannot use the PBIP preview features, or when a preview limitation blocks the project workflow.
+
+The slot holder must:
+
+- announce `[SLOT ACQUIRED]` in the team channel and Jira issue;
+- edit, save, document, commit, and push the binary file;
+- export screenshots or a PDF for review;
+- open a PR and announce `[SLOT RELEASED - PR #…]`.
+
+Only one person edits the same `.pbix` at a time because Git cannot merge its binary contents safely. The slot is a fallback for binary work, not the only Power BI collaboration model.
+
+#### 1. Claim the slot
+
+Before opening the binary file, post in the pinned Slack thread in `agile-powerbi-scrum` and, where useful, in the Jira issue:
 
 ```text
 [SLOT ACQUIRED]
 Working on dashboard visuals and DAX updates for SCRUM-16.
 ```
 
-If needed, also add the same update to the Jira issue so the task history stays clear.
-
-### 2. Sync and branch
+#### 2. Sync and branch
 
 ```bash
 git fetch upstream
-# Gets the newest shared changes.
-
 git checkout main
-# Switches to main.
-
 git pull upstream main
-# Updates main from the team repo.
-
 git checkout -b SCRUM-16-powerbi-updates
-# Creates your Power BI task branch.
 ```
 
-### 3. Edit the Power BI file
+#### 3. Edit the Power BI file
 
-Make your changes in Power BI Desktop.
+Make the assigned visual, DAX, layout, formatting, or model changes in Power BI Desktop and save when finished. Keep the slot until the work is documented, committed, pushed, and handed off.
 
-Examples:
-- visual updates,
-- DAX changes,
-- layout changes,
-- KPI formatting,
-- data model refinements.
+#### 4. Export review assets
 
-Save the file when finished.
-
-### 4. Export review assets
-
-After editing, export at least one review file.
-
-Examples:
-- screenshot,
-- PDF,
-- image of the updated report page.
-
-Save review assets in a folder in your branch, such as:
+Export at least one screenshot, PDF, or page image and store it in the branch, for example:
 
 ```text
 visuals/dashboard-screenshots/
 ```
 
-Then commit and push them through the usual fork-and-PR workflow.
+This lets teammates review progress without opening Power BI Desktop.
 
-This helps teammates review progress without opening Power BI Desktop.
+#### 5. Document the handoff
 
-### 5. Document the handoff
-
-Write a short update in the Jira ticket, project note, or issue comment.
+Leave a concise update in Jira, the project notes, or the relevant issue:
 
 ```text
 Updated sales overview page, cleaned KPI labels, and revised filter layout.
 Pending: stakeholder review on regional breakdown chart.
 ```
 
-### 6. Commit and push
+#### 6. Commit and push
 
 ```bash
-git add .
-# Stages the Power BI file, screenshots, and notes.
-
+git add reports/ visuals/dashboard-screenshots/ docs/
 git commit -m "SCRUM-16 updated Power BI dashboard layout"
-# Saves the work with the Jira key.
-
 git push origin SCRUM-16-powerbi-updates
-# Sends the branch to your fork.
 ```
 
-### 7. Open the Pull Request and release the slot
+Stage intended paths instead of using `git add .`, so caches, local settings, and unrelated work cannot enter the commit accidentally.
 
-Open a Pull Request from your fork to the team repository.
+#### 7. Open the PR and release the slot
 
-Then update the Jira issue and post a short release message in the pinned Slack thread in the `agile-powerbi-scrum` channel.
-
-```text
-[SLOT RELEASED - PR OPENED]
-```
-
-or
+Open a Pull Request from the fork to the team repository. Update Jira and release the slot in the pinned Slack thread:
 
 ```text
 [SLOT RELEASED - PR #12]
 ```
 
-If the Power BI slot is busy, do not wait idle.
+If the slot is occupied, continue with work that does not require the binary:
 
-Use that time for:
-- documentation,
-- sample data cleanup,
-- sprint notes,
-- screenshot organization,
-- presentation prep,
-- issue review,
+- documentation;
+- sample-data cleanup;
+- sprint notes;
+- screenshot organisation;
+- presentation preparation;
+- issue review;
 - README improvements.
 
 ---
@@ -362,7 +346,9 @@ Fork -> clone -> add upstream -> sync main -> create branch -> complete task -> 
 ### Power BI task
 
 ```text
-Claim slot -> sync main -> create branch -> edit Power BI file -> export visuals -> document handoff -> commit -> push to fork -> open PR -> release slot
+PBIP: sync main -> create branch -> claim report/model objects -> edit -> inspect PBIR/TMDL diff -> export review assets -> PR -> Desktop validation
+
+PBIX fallback: claim slot -> sync main -> create branch -> edit binary -> export review assets -> PR -> release slot
 ```
 
 ---
@@ -370,5 +356,6 @@ Claim slot -> sync main -> create branch -> edit Power BI file -> export visuals
 ## Final rule
 
 When in doubt:
-- do not edit the live Power BI file at the same time as someone else
+- coordinate ownership before editing the same Power BI object;
+- use the handoff slot for binary `.pbix` work;
 - and always leave enough documentation for the next teammate to continue smoothly.

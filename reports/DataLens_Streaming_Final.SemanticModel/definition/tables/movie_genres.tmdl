@@ -23,7 +23,7 @@ table movie_genres
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\Andrew\Documents\Generation Australia\Agile Project\Data\Processed\movie_genres.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+			    Source = Csv.Document(File.Contents(DataRoot & "\processed\movie_genres.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"MovieID", Int64.Type}, {"GenreID", Int64.Type}})
 				in
