@@ -1,5 +1,8 @@
 # StreamFlix SQL Table Creation & Data Ingestion Specification
 
+> **Historical Sprint artifact.** This document records the original ingestion specification. The executable MySQL 8 setup is `database/schema.sql` plus `database/import.sql`; exact mappings are in the [data contract](../data-contract.md).
+
+
 **Document:** `StreamFlix_Table_Creation_Specification`  
 **Author:** Bhanu Prakash (Product Owner)  
 **Project:** DataLens Streaming  

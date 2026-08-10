@@ -1,265 +1,100 @@
-# MySQL Database Setup Guide for StreamFlix
+# MySQL database setup guide for StreamFlix
 
-## 1. Set up the database connection
+The supported database backend is **MySQL 8.0 or later** and the canonical database name is **`DataLensStreaming`**. The executable SQL is stored in `database/`; this guide explains how to run it without duplicating a second, drifting copy of the schema in prose.
 
-```sql
-CREATE DATABASE IF NOT EXISTS DataLensStreaming;
-USE DataLensStreaming;
+For exact columns, types, CSV mappings, artifact authority, and the duplicate-rating decision, read the [StreamFlix data contract](../data-contract.md).
+
+## Prerequisites
+
+- MySQL Server and the `mysql` command-line client.
+- Permission to create the `DataLensStreaming` database.
+- Local-file loading enabled in both the client and server where required.
+- A clone of this repository; run commands from its root directory so relative CSV paths resolve.
+
+No credentials are stored in this repository. Supply them through the normal MySQL prompt or your local client configuration.
+
+## 1. Create the schema
+
+```bash
+mysql --local-infile=1 -u YOUR_USER -p < database/schema.sql
 ```
 
-## 2. Creating genres table
+[`database/schema.sql`](../../database/schema.sql) creates:
 
-```sql
-CREATE TABLE genres (
-  GenreID INT PRIMARY KEY,
-  Genre_Name VARCHAR(100) NOT NULL
-);
+- `genres`;
+- `movies_clean`;
+- `users`;
+- `ratings_clean`;
+- `movie_genres`.
+
+It defines primary keys, foreign keys, the movie/genre composite key, one-rating-per-user/movie uniqueness, and basic domain checks.
+
+## 2. Import the checked-in snapshots
+
+```bash
+mysql --local-infile=1 -u YOUR_USER -p DataLensStreaming < database/import.sql
 ```
 
-## 3. Creating movies_clean table
+[`database/import.sql`](../../database/import.sql) truncates the five canonical tables and reloads them in dependency order from:
 
-```sql
-CREATE TABLE movies_clean (
-  MovieID INT PRIMARY KEY,
-  Movie_Title VARCHAR(255) NOT NULL,
-  Year INT,
-  Language VARCHAR(100),
-  Country VARCHAR(100),
-  Total_Views INT
-);
+```text
+data/raw/Users.csv
+data/processed/movies_clean.csv
+data/processed/ratings_clean.csv
+data/processed/genres.csv
+data/processed/movie_genres.csv
 ```
 
-## 4. Creating movie_genres table
+The script uses `LOAD DATA LOCAL INFILE` and repository-relative paths. It maps the movie CSV header `Total Views` to the SQL column `TotalViews`, parses the processed rating timestamp as day/month/year, and trims carriage returns so the import behaves consistently with CRLF or LF checkouts.
 
-```sql
-CREATE TABLE movie_genres (
-  MovieID INT NOT NULL,
-  GenreID INT NOT NULL,
-  PRIMARY KEY (MovieID, GenreID),
-  CONSTRAINT fk_movie_genres_movie
-    FOREIGN KEY (MovieID)
-    REFERENCES movies_clean(MovieID),
-  CONSTRAINT fk_movie_genres_genre
-    FOREIGN KEY (GenreID)
-    REFERENCES genres(GenreID)
-);
+If MySQL reports that local data loading is disabled, inspect your client/server policy before changing it. Do not replace the repository paths with an author's personal absolute paths.
+
+## 3. Validate the load
+
+First validate the repository snapshots without a database:
+
+```bash
+python scripts/validate_project.py
 ```
 
-## 5. Creating users table
+Then validate the loaded MySQL tables:
 
-```sql
-CREATE TABLE users (
-  UserID INT PRIMARY KEY,
-  Age INT,
-  Gender VARCHAR(20),
-  Country VARCHAR(50),
-  Subscription_Status VARCHAR(20),
-  Total_Watch_Time INT,
-  Device VARCHAR(50)
-);
+```bash
+mysql -u YOUR_USER -p DataLensStreaming < database/validate.sql
 ```
 
-## 6. Creating ratings table
+[`database/validate.sql`](../../database/validate.sql) returns a `Passed` value for expected row counts, foreign-key coverage, duplicate user/movie ratings, and rating range. Every `Passed` value should be `1`.
 
-```sql
-CREATE TABLE ratings (
-  RatingID INT PRIMARY KEY,
-  UserID INT NOT NULL,
-  MovieID INT NOT NULL,
-  Rating DECIMAL(2,1),
-  Rating_Timestamp DATETIME,
-  CONSTRAINT fk_ratings_user
-    FOREIGN KEY (UserID)
-    REFERENCES users(UserID),
-  CONSTRAINT fk_ratings_movie
-    FOREIGN KEY (MovieID)
-    REFERENCES movies_clean(MovieID)
-);
-```
+Expected canonical counts are:
 
-## 7. Data Import Example
+| Table | Rows |
+|---|---:|
+| `genres` | 18 |
+| `movies_clean` | 3,883 |
+| `users` | 6,040 |
+| `ratings_clean` | 9,998 |
+| `movie_genres` | 6,404 |
 
-```sql
-SHOW VARIABLES LIKE 'secure_file_priv';
-```
+## 4. Example relationship query
 
-```sql
-LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/movies_clean.csv'
-INTO TABLE movies_clean
-FIELDS TERMINATED BY ','
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS
-(MovieID, Movie_Title, Year, Language, Country, Total_Views);
-```
-
-## 8. Validate relationships
-
-### A. Count validation
-
-#### I. Count genres
-
-```sql
-SELECT COUNT(*) FROM genres;
-```
-
-#### II. Count movies
-
-```sql
-SELECT COUNT(*) AS movie_count FROM movies_clean;
-```
-
-#### III. Count movie genres
-
-```sql
-SELECT COUNT(*) FROM movie_genres;
-```
-
-#### IV. Count ratings
-
-```sql
-SELECT COUNT(*) AS rating_count FROM ratings;
-```
-
-#### V. Count users
-
-```sql
-SELECT COUNT(*) AS user_count FROM users;
-```
-
-### B. Validate Users -> Ratings relationship
+All names below exist in the canonical schema:
 
 ```sql
 SELECT
-    r.RatingID,
-    r.UserID,
-    u.Age,
-    u.Gender,
-    u.Country,
-    u.SubscriptionStatus,
-    u.TotalWatchTime,
-    u.Device,
-    r.MovieID,
-    r.Rating,
-    r.Timestamp
-FROM ratings r
-JOIN users u
-    ON r.UserID = u.UserID
+  r.RatingID,
+  r.UserID,
+  u.SubscriptionStatus,
+  r.MovieID,
+  m.Movie_Title,
+  r.Rating,
+  r.`Timestamp`
+FROM ratings_clean AS r
+JOIN users AS u ON u.UserID = r.UserID
+JOIN movies_clean AS m ON m.MovieID = r.MovieID
+ORDER BY r.RatingID
 LIMIT 20;
 ```
 
-### C. Validate Movies -> Ratings relationship
+## Historical naming note
 
-```sql
-SELECT
-    r.RatingID,
-    r.MovieID,
-    m.Movie_Title,
-    m.Year,
-    m.Language,
-    m.Country,
-    m.Total_Views,
-    r.UserID,
-    r.Rating,
-    r.Timestamp
-FROM ratings r
-JOIN movies_clean m
-    ON r.MovieID = m.MovieID
-LIMIT 20;
-```
-
-### D. Validate Users + Movies + Ratings together
-
-```sql
-SELECT
-    r.RatingID,
-    u.UserID,
-    u.Age,
-    u.Gender,
-    u.Country AS UserCountry,
-    u.SubscriptionStatus,
-    m.MovieID,
-    m.Movie_Title,
-    m.Country AS MovieCountry,
-    m.Language,
-    m.Year,
-    r.Rating,
-    r.Timestamp
-FROM ratings r
-JOIN users u
-    ON r.UserID = u.UserID
-JOIN movies_clean m
-    ON r.MovieID = m.MovieID
-LIMIT 20;
-```
-
-### E. Check orphan UserID records in ratings
-
-This checks whether any rating belongs to a user that does not exist in users.
-
-```sql
-SELECT
-    r.UserID,
-    COUNT(*) AS orphan_rating_count
-FROM ratings r
-LEFT JOIN users u
-    ON r.UserID = u.UserID
-WHERE u.UserID IS NULL
-GROUP BY r.UserID;
-```
-
-### F. Check orphan MovieID records in ratings
-
-This checks whether any rating belongs to a movie that does not exist in movies_clean.
-
-```sql
-SELECT
-    r.MovieID,
-    COUNT(*) AS orphan_rating_count
-FROM ratings r
-LEFT JOIN movies_clean m
-    ON r.MovieID = m.MovieID
-WHERE m.MovieID IS NULL
-GROUP BY r.MovieID;
-```
-
-### G. Check how many users have ratings
-
-```sql
-SELECT
-    COUNT(DISTINCT r.UserID) AS users_with_ratings
-FROM ratings r;
-```
-
-### H. Check users without ratings
-
-```sql
-SELECT
-    u.UserID,
-    u.Age,
-    u.Gender,
-    u.Country,
-    u.SubscriptionStatus,
-    u.TotalWatchTime,
-    u.Device
-FROM users u
-LEFT JOIN ratings r
-    ON u.UserID = r.UserID
-WHERE r.UserID IS NULL;
-```
-
-### I. Check movies without ratings
-
-```sql
-SELECT
-    m.MovieID,
-    m.Movie_Title,
-    m.Year,
-    m.Language,
-    m.Country,
-    m.Total_Views
-FROM movies_clean m
-LEFT JOIN ratings r
-    ON m.MovieID = r.MovieID
-WHERE r.MovieID IS NULL;
-```
+Sprint documents and exploratory notebooks contain names such as `ratings`, `Ratings_Dataset`, `Subscription_Status`, `Total_Watch_Time`, `Rating_Timestamp`, and the SQL Server database `DataLens`. They are retained as project history. The executable files in `database/` and the [data contract](../data-contract.md) supersede those names for current setup.
